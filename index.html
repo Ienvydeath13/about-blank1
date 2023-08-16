@@ -1,18 +1,30 @@
 <script>
-var win = window.open();
+// Instead of using a raw window.open(), we can use the 'mode' parameter to open the window without a header or scrollbars
+var win = window.open('',  "scrollbars=no, location=no, status=no, menubar=no, toolbar=no");
+
+// Set the document's body style properties
 win.document.body.style.margin = '0';
 win.document.body.style.height = '100vh';
+
+// Dynamically create an iframe with your desired CSS properties
 var iframe = win.document.createElement('iframe');
 iframe.style.border = 'none';
 iframe.style.width = '100%';
 iframe.style.height = '100%';
 iframe.style.margin = '0';
 iframe.src = 'https://omegasneslovingphoenixes.github.io/.github.io/';
+
+// Append the iframe to the document's body
 win.document.body.appendChild(iframe);
 
-function myFunction() {
-    location.replace("https://www.bing.com/")
+// Add an event listener to the window to close it when it is done loading
+win.onload = function(){
+  window.close();
 }
 
-window.close();
+// In case the window fails to open for some reason (e.g., URL is empty), we can set a fallback function to perform some other action
+function myFunction() {
+  location.replace("https://www.bing.com/");
+}
+
 </script>
